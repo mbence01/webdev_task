@@ -3,10 +3,30 @@
 {% block title %}Számlázási címeim{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="css/address.css" />
+    <link rel="stylesheet" href="/css/templates/address.css" />
 {% endblock %}
 
 {% block body %}
+    <p id="newaddress-title">Új számlázási cím létrehozása:</p>
+
+    <div id="newaddress-form">
+        {{ form_start(newAddressForm) }}
+            {{ form_row(newAddressForm.type) }}
+            {{ form_row(newAddressForm.name) }}
+            {{ form_row(newAddressForm.phonenumber) }}
+            {{ form_row(newAddressForm.taxnumber) }}
+            {{ form_row(newAddressForm.country) }}
+            {{ form_row(newAddressForm.postcode) }}
+            {{ form_row(newAddressForm.city) }}
+            {{ form_row(newAddressForm.address) }}
+
+            <p id="field-req-warning">A *-al jelölt mezők kitöltése kötelező!</p>
+
+            {{ form(newAddressForm) }}
+        {{ form_end(newAddressForm) }}
+    </div>
+
+    <p id="addr-title">Számlázási címeim:</p>
 
     {% if addresses|length > 0 %}
         <table id="address-list-tbl">
@@ -25,10 +45,10 @@
             {% for address in addresses %}
                 <tr>
                     <td>
-                        {% if address.type == 0 %}
-                            Magánszemély
+                        {% if address.type == 1 %}
+                            Magán
                         {% else %}
-                            Cég
+                            Céges
                         {% endif %}
                     </td>
 
@@ -41,11 +61,11 @@
                     <td>{{ address.address }}</td>
                     
                     <td>
-                        <a href="#" title="Módosítás">
+                        <a href="{{ path('address', { id: address.id }) }}" title="Módosítás">
                             <img src="images/edit.png" width="16">
                         </a>
 
-                        <a href="#" title="Törlés">
+                        <a href="{{ path('deleteaddr', { id: address.id }) }}" title="Törlés">
                             <img src="images/delete.png" width="16">
                         </a>
                     </td>
