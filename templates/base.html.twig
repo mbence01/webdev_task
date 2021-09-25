@@ -9,13 +9,31 @@
             <link rel="stylesheet" href="public/css/main.css" />
         {% endblock %}
 
+        <link rel="stylesheet" href="public/css/bootstrap.css" />
+
         {% block javascripts %}
             {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}
+
+        <script type="text/javascript" src="public/js/bootstrap.js"></script>
     </head>
     <body>
-        <div id="main-container">
+        <div id="main-container" class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-md-2 col-xs-1"></div>
+                <div class="col-lg-6 col-md-8 col-xs-10">
+                    <header>
+                        <nav id="header-menu">
+                            <a href="#">Számlázási címeim</a>
+                            <a href="#">Megrendelés</a>
+                            <a href="#">Megrendelések listázása</a>
+                        </nav>
+                    </header>
 
-        {% block body %}{% endblock %}
+                    {% block body %}{% endblock %}
+                </div>
+                <div class="col-lg-3 col-md-2 col-xs-1"></div>
+            </div>
+        </div>
     </body>
 </html>
