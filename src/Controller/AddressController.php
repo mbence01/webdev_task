@@ -44,15 +44,18 @@ class AddressController extends AbstractController
         $form = null;
         $addr = null;
         $page = null;
+        $pageTitle = "";
 
         if($id == 0) {
             $addr = new Address();
             $form = $this->createForm(AddressFormType::class, $addr);
             $page = "addaddr";
+            $pageTitle = "Új számlázási cím létrehozása:";
         } else {
             $addr = $addrRepo->findBy(["id" => $id])[0];
             $form = $this->createForm(EditAddressFormType::class, $addr);
             $page = "editaddr";
+            $pageTitle = "Számlázási cím módosítása";
         }
 
         $form->handleRequest($req);
@@ -69,6 +72,7 @@ class AddressController extends AbstractController
             'address/address.html.twig', [
                 'addresses' => $addrRepo->findAll(),
                 'newAddressForm' => $form->createView(),
+                'pageTitle' => $pageTitle
             ]
         ));
     }

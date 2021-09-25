@@ -7,7 +7,9 @@
 {% endblock %}
 
 {% block body %}
-    <p id="newaddress-title">Új számlázási cím létrehozása:</p>
+    <p id="newaddress-title">
+        {{ pageTitle }}
+    </p>
 
     <div id="newaddress-form">
         {{ form_start(newAddressForm) }}
