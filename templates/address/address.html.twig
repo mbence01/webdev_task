@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Számlázási címeim{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="css/address.css" />
+{% endblock %}
+
+{% block body %}
+
+    {% if addresses|length > 0 %}
+        <table id="address-list-tbl">
+            <tr>
+                <th>Típus</th>
+                <th>Név</th>
+                <th>Telefonszám</th>
+                <th>Adószám</th>
+                <th>Ország</th>
+                <th>Irányítószám</th>
+                <th>Város</th>
+                <th>Utca</th>
+                <th>Műveletek</th>
+            </tr>
+
+            {% for address in addresses %}
+                <tr>
+                    <td>
+                        {% if address.type == 0 %}
+                            Magánszemély
+                        {% else %}
+                            Cég
+                        {% endif %}
+                    </td>
+
+                    <td>{{ address.name }}</td>
+                    <td>{{ address.phonenumber }}</td>
+                    <td>{{ address.taxnumber }}</td>
+                    <td>{{ address.country }}</td>
+                    <td>{{ address.postcode }}</td>
+                    <td>{{ address.city }}</td>
+                    <td>{{ address.address }}</td>
+                    
+                    <td>
+                        <a href="#" title="Módosítás">
+                            <img src="images/edit.png" width="16">
+                        </a>
+
+                        <a href="#" title="Törlés">
+                            <img src="images/delete.png" width="16">
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p id="no-record">Még nem adtál hozzá egy számlázási címet sem!</p>
+    {% endif %}
+
+{% endblock %}
