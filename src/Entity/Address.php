@@ -93,6 +93,8 @@ class Address
 
     public function setPhonenumber(?string $phonenumber): self
     {
+        if($phonenumber == null) return $this;
+
         $this->phonenumber = $phonenumber;
 
         return $this;
@@ -103,8 +105,10 @@ class Address
         return $this->taxnumber;
     }
 
-    public function setTaxnumber(string $taxnumber): self
+    public function setTaxnumber(?string $taxnumber): self
     {
+        if($taxnumber == null) return $this;
+
         $this->taxnumber = $taxnumber;
 
         return $this;
@@ -157,4 +161,17 @@ class Address
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return  $this->getName()        . 
+                " - "                   .    
+                $this->getCountry()     .
+                " "                     .
+                $this->getPostCode()    .
+                " "                     .
+                $this->getCity()        .
+                " "                     .
+                $this->getAddress();
+    }        
 }

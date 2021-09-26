@@ -78,6 +78,11 @@ class Order
         return $this->id;
     }
 
+    public function getFormattedId(): string
+    {
+        return sprintf("%05d", $this->id);
+    }
+
     public function getGrossAmount(): ?int
     {
         return $this->grossAmount;
@@ -145,6 +150,8 @@ class Order
 
     public function setAddressPhone(?string $addressPhone): self
     {
+        if($addressPhone == null) return $this;
+
         $this->addressPhone = $addressPhone;
 
         return $this;
@@ -155,8 +162,10 @@ class Order
         return $this->addressTax;
     }
 
-    public function setAddressTax(string $addressTax): self
+    public function setAddressTax(?string $addressTax): self
     {
+        if($addressTax == null) return $this;
+
         $this->addressTax = $addressTax;
 
         return $this;
