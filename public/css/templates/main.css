@@ -16,6 +16,7 @@ a, a:visited, a:hover, a:active {
 }
 
 td.links {
+    font-size: 13px;
     font-weight: bold;
     border: 1px solid black;
     border-top: none;
@@ -28,6 +29,10 @@ td.links:hover {
     background: rgba(0, 0, 0, .05);
     cursor: pointer;
     transition: .5s;
+}
+
+#selected {
+    background: rgba(0, 0, 0, .2);
 }
 
 td.links:first-child {
