@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Megrendelés{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/templates/placeorder.css" />
+{% endblock %}
+
+{% block id2 %}id="selected"{% endblock %}
+
+{% block body %}
+    <div id="cash-data-container">
+        <p>Nettó végösszeg: <span>17,990 Ft</span></p>
+        <p>Áfa összeg: <span>4,857 Ft</span></p>
+        <p>Bruttó végösszeg: <span>22,847 Ft</span></p>
+    </div>
+
+    {{ form_start(select_addr) }}
+        {{ form_row(select_addr.addrselect) }}
+
+        <div id="form_container">
+            <div id="title">
+                <p>Új számlázási cím</p>
+                <hr>
+            </div>
+
+            <table id="form_tbl">
+                <tr>
+                    <td>{{ form_row(select_addr.type) }}</td>
+                    <td>{{ form_row(select_addr.name) }}</td>
+                </tr>
+
+                <tr>
+                    <td>{{ form_row(select_addr.phonenumber) }}</td>
+                    <td>{{ form_row(select_addr.taxnumber) }}</td>
+                </tr>
+
+                <tr>
+                    <td>{{ form_row(select_addr.country) }}</td>
+                    <td>{{ form_row(select_addr.postcode) }}</td>
+                </tr>
+
+                <tr>
+                    <td>{{ form_row(select_addr.city) }}</td>
+                    <td>{{ form_row(select_addr.address) }}</td>
+                </tr>
+            </table>
+        </div>
+
+        <p id="checkbox">
+            {{ form_widget(select_addr.checkbox) }}
+            Kijelentem, hogy elolvastam és elfogadom az általános szerződési feltételeket. *
+        </p>
+
+        <p id="field-req-warning">A *-al jelölt mezők kitöltése kötelező!</p>
+    {{ form_end(select_addr) }}
+{% endblock %}

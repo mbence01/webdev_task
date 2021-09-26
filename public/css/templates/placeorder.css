@@ -1,0 +1,102 @@
+#cash-data-container {
+    margin: 0;
+    text-align: left;
+    text-indent: 15px;
+    width: 100%;
+    padding: 1px 0;
+    background: rgba(0, 0, 0, .2);
+}
+
+#cash-data-container p {
+    font-weight: 200;
+    font-size: 14px;
+    margin: 7.5px 0;
+}
+
+#cash-data-container p span {
+    font-weight: 500;
+}
+
+#cash-data-container p:last-child span {
+    font-size: 16px;
+    color: red;    
+}
+
+form {
+    text-align: left;
+    margin: 30px 0;
+}
+
+#title {
+    margin-top: 60px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+#title p, hr {
+    margin: 0;
+}
+
+hr {
+    border: 1px solid black;
+    margin-bottom: 25px;
+}
+
+#form_tbl {
+    width: 100%;
+}
+
+#form_tbl tr {
+    height: 80px;
+}
+
+#form_tbl tr td:nth-child(even) {
+    padding-left: 10px;
+}
+
+#form_tbl tr td:nth-child(odd) {
+    padding-right: 10px;
+}
+
+label {
+    font-size: 12px;
+    font-weight: bold;
+    display: block;
+}
+
+#checkbox {
+    margin-top: 25px;
+}
+
+input:not(#form_checkbox), select {
+    width: 100%;
+    height: 40px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    background: white;
+    text-indent: 15px;
+}
+
+button {
+    display: block;
+    margin: auto;
+    outline: none;
+    border: 0;
+    background: indianred;
+    padding: 15px 30px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#field-req-warning {
+    margin-top: 40px;
+    font-size: 11px;
+    text-align: center;
+    color: indianred;
+}
+
+#form_container {
+    transition: 1s;
+    display: none;
+}
