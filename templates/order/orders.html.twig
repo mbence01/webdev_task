@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Megrendelések listázása{% endblock %}
+
+{% block stylesheets %}<link rel="stylesheet" href="/css/templates/orders.css" />{% endblock %}
+
+{% block id3 %}id="selected"{% endblock %}
+
+{% block body %}
+    <p id="orders-title">Rendeléseim:</p>
+
+    {% if orders|length > 0 %}
+        {% for order in orders %}
+            <div class="record">
+                <p class="orderid-container">
+                    Rendelés azonosító: 
+                    
+                    <span class="order-id">
+                        #{{ order.getFormattedId() }}
+                    </span>
+                </p>
+            
+                <div class="order-details">
+                    <p>Nettó végösszeg: <span>17,990 Ft</span></p>
+                    <p>Áfa összeg: <span>4,857 Ft</span></p>
+                    <p>Bruttó végösszeg: <span>22,847 Ft</span></p>
+                </div>
+
+                <p class="orderaddr-container">
+                    Megadott számlázási cím:
+                    
+                    <span class="order-address"> 
+                        {{ order.addressName }}
+                        - 
+                        {{ order.addressCountry }}
+                        
+                        {{ order.addressPostCode }}
+                        
+                        {{ order.addressCity }}
+                        
+                        {{ order.addressDesc }}
+                    </span>
+                </p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p id="no-record">Még nem adtál hozzá egy számlázási címet sem!</p>
+    {% endif %}
+{% endblock %}
