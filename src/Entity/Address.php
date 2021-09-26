@@ -33,7 +33,7 @@ class Address
     private $phonenumber;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $taxnumber;
 
@@ -98,12 +98,12 @@ class Address
         return $this;
     }
 
-    public function getTaxnumber(): ?int
+    public function getTaxnumber(): ?string
     {
         return $this->taxnumber;
     }
 
-    public function setTaxnumber(?int $taxnumber): self
+    public function setTaxnumber(string $taxnumber): self
     {
         $this->taxnumber = $taxnumber;
 

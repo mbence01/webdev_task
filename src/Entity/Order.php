@@ -150,12 +150,12 @@ class Order
         return $this;
     }
 
-    public function getAddressTax(): ?int
+    public function getAddressTax(): ?string
     {
         return $this->addressTax;
     }
 
-    public function setAddressTax(?int $addressTax): self
+    public function setAddressTax(string $addressTax): self
     {
         $this->addressTax = $addressTax;
 
