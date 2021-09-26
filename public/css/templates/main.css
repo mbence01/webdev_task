@@ -37,10 +37,12 @@ td.links:hover {
 
 td.links:first-child {
     border-left: none;
+    border-top-left-radius: 15px;
 }
 
 td.links:last-child {
     border-right: none;
+    border-top-right-radius: 15px;
 }
 
 #main-container {
