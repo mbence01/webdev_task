@@ -37,17 +37,7 @@ class PlaceOrderController extends AbstractController
         $addr = new Address();
 
         foreach($addressList as $elem) {
-            $temp = $elem->getName()        . 
-                    " - "                   .    
-                    $elem->getCountry()     .
-                    " "                     .
-                    $elem->getPostCode()    .
-                    " "                     .
-                    $elem->getCity()        .
-                    " "                     .
-                    $elem->getAddress();
-
-            $choiceList[$temp] = $elem->getId();
+            $choiceList[$elem->__toString()] = $elem->getId();
         }
 
         $choiceList["Új számlázási címet adok meg"] = 0;
@@ -156,8 +146,8 @@ class PlaceOrderController extends AbstractController
 
                 $addr->setType($arr["type"]);
                 $addr->setName($arr["name"]);
-                $addr->setPhoneNumber($arr["phonenumber"]);
-                $addr->setTaxNumber($arr["taxnumber"]);
+                $addr->setPhonenumber($arr["phonenumber"]);
+                $addr->setTaxnumber($arr["taxnumber"]);
                 $addr->setCountry($arr["country"]);
                 $addr->setPostCode($arr["postcode"]);
                 $addr->setCity($arr["city"]);
