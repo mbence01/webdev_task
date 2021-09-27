@@ -62,6 +62,41 @@ class AddressController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()) 
         {
+            $arr = $form->getData();
+
+            /*return new Response(
+                var_dump(!empty($arr->getTaxnumber())) . "<br>" . 
+                var_dump(preg_match("/^[0-9]{8}-[1-5]-[0-9]{2}$/", $arr->getTaxnumber()) == 1) . "<br>" . 
+                var_dump(!empty($arr->getTaxnumber()) && preg_match("/^[0-9]{8}-[1-5]-[0-9]{2}$/", $arr->getTaxnumber()) == 1)
+            );*/
+
+            $fieldLeftEmpty =    
+                empty($arr->getName())     ||
+                empty($arr->getCountry())  ||
+                empty($arr->getPostCode()) ||
+                empty($arr->getCity())     ||
+                empty($arr->getAddress());
+
+            if($fieldLeftEmpty) {
+                return $this->redirectToRoute('address', ["success" => 0, "err" => "fd"]);
+            }
+
+            if($arr->getType() == 0 && empty($arr->getTaxnumber())) {
+                return $this->redirectToRoute('address', ["success" => 0, "err" => "te"]);
+            }
+
+            if(intval($arr->getPostCode()) == 0) {
+                return $this->redirectToRoute('address', ["success" => 0, "err" => "pc"]);
+            }
+
+            if(!empty($arr->getPhonenumber()) && (intval(substr($arr->getPhonenumber(), 1)) == 0 || strpos($arr->getPhonenumber(), "+36") != 0)) {
+                return $this->redirectToRoute('address', ["success" => 0, "err" => "ph"]);
+            }
+
+            if(!empty($arr->getTaxnumber()) && preg_match("/^[0-9]{8}-[1-5]-[0-9]{2}$/", $arr->getTaxnumber()) != 1) {
+                return $this->redirectToRoute('address', ["success" => 0, "err" => "tx"]);
+            }
+
             $this->entityManager->persist($addr);
             $this->entityManager->flush();
 

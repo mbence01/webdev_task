@@ -48,6 +48,7 @@ class PlaceOrderController extends AbstractController
                 'choices' => $choiceList,
                 'attr' => [
                     'onclick' => 'selectChanged()',
+                    'count' => count($choiceList)
                 ]
             ])
             ->add('type', ChoiceType::class, [
@@ -136,11 +137,11 @@ class PlaceOrderController extends AbstractController
                     return $this->redirectToRoute('place_order', ["success" => 0, "err" => "pc"]);
                 }
 
-                if(intval(substr($arr["phonenumber"], 1)) == 0 || strpos($arr["phonenumber"], "+36") != 0) {
+                if(!empty($arr["phonenumber"]) && (intval(substr($arr["phonenumber"], 1)) == 0 || strpos($arr["phonenumber"], "+36") != 0)) {
                     return $this->redirectToRoute('place_order', ["success" => 0, "err" => "ph"]);
                 }
 
-                if(preg_match("/^[0-9]{8}-[1-5]-[0-9]{2}$/", $arr["taxnumber"]) == 1 && $arr["type"] == 0) {
+                if(preg_match("/^[0-9]{8}-[1-5]-[0-9]{2}$/", $arr["taxnumber"]) == 1 && !empty($arr["taxnumber"])) {
                     return $this->redirectToRoute('place_order', ["success" => 0, "err" => "tx"]);
                 }
 
