@@ -66,6 +66,12 @@ if(urlParams.length != 0) {
 
 // Route: /placeorder
 
+window.addEventListener("load", function() {
+    if(document.getElementById("form_addrselect").getAttribute("count") == "1") {
+        document.getElementById("form_container").style.display = "block";
+    }
+});
+
 function selectChanged() {
     let e = document.getElementById("form_addrselect");
 
