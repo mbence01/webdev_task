@@ -43,7 +43,7 @@ class Address
     private $country;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=10)
      */
     private $postcode;
 
@@ -126,12 +126,12 @@ class Address
         return $this;
     }
 
-    public function getPostcode(): ?int
+    public function getPostcode(): ?string
     {
         return $this->postcode;
     }
 
-    public function setPostcode(int $postcode): self
+    public function setPostcode(?string $postcode): self
     {
         $this->postcode = $postcode;
 

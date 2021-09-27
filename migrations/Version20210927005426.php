@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210926220832 extends AbstractMigration
+final class Version20210927005426 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -22,8 +22,8 @@ final class Version20210926220832 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE SEQUENCE address_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE "order_id_seq" INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE TABLE address (id INT NOT NULL, type INT NOT NULL, name VARCHAR(255) NOT NULL, phonenumber VARCHAR(20) DEFAULT NULL, taxnumber VARCHAR(15) DEFAULT NULL, country VARCHAR(50) NOT NULL, postcode INT NOT NULL, city VARCHAR(50) NOT NULL, address VARCHAR(100) NOT NULL, PRIMARY KEY(id))');
-        $this->addSql('CREATE TABLE "order" (id INT NOT NULL, gross_amount INT NOT NULL, net_amount INT NOT NULL, tax_amount INT NOT NULL, address_type INT NOT NULL, address_name VARCHAR(255) NOT NULL, address_phone VARCHAR(20) DEFAULT NULL, address_tax VARCHAR(15) DEFAULT NULL, address_country VARCHAR(50) NOT NULL, address_post_code INT NOT NULL, address_city VARCHAR(50) NOT NULL, address_desc VARCHAR(100) NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE address (id INT NOT NULL, type INT NOT NULL, name VARCHAR(255) NOT NULL, phonenumber VARCHAR(20) DEFAULT NULL, taxnumber VARCHAR(255) DEFAULT NULL, country VARCHAR(50) NOT NULL, postcode VARCHAR(10) NOT NULL, city VARCHAR(50) NOT NULL, address VARCHAR(100) NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE "order" (id INT NOT NULL, gross_amount INT NOT NULL, net_amount INT NOT NULL, tax_amount INT NOT NULL, address_type INT NOT NULL, address_name VARCHAR(255) NOT NULL, address_phone VARCHAR(20) DEFAULT NULL, address_tax INT DEFAULT NULL, address_country VARCHAR(50) NOT NULL, address_post_code VARCHAR(10) NOT NULL, address_city VARCHAR(50) NOT NULL, address_desc VARCHAR(100) NOT NULL, PRIMARY KEY(id))');
     }
 
     public function down(Schema $schema): void

@@ -59,7 +59,7 @@ class Order
     private $addressCountry;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=10)
      */
     private $addressPostCode;
 
@@ -183,12 +183,12 @@ class Order
         return $this;
     }
 
-    public function getAddressPostCode(): ?int
+    public function getAddressPostCode(): ?string
     {
         return $this->addressPostCode;
     }
 
-    public function setAddressPostCode(int $addressPostCode): self
+    public function setAddressPostCode(?string $addressPostCode): self
     {
         $this->addressPostCode = $addressPostCode;
 
