@@ -64,12 +64,6 @@ class AddressController extends AbstractController
         {
             $arr = $form->getData();
 
-            /*return new Response(
-                var_dump(!empty($arr->getTaxnumber())) . "<br>" . 
-                var_dump(preg_match("/^[0-9]{8}-[1-5]-[0-9]{2}$/", $arr->getTaxnumber()) == 1) . "<br>" . 
-                var_dump(!empty($arr->getTaxnumber()) && preg_match("/^[0-9]{8}-[1-5]-[0-9]{2}$/", $arr->getTaxnumber()) == 1)
-            );*/
-
             $fieldLeftEmpty =    
                 empty($arr->getName())     ||
                 empty($arr->getCountry())  ||
@@ -85,11 +79,11 @@ class AddressController extends AbstractController
                 return $this->redirectToRoute('address', ["success" => 0, "err" => "te"]);
             }
 
-            if(intval($arr->getPostCode()) == 0) {
+            if(preg_match("/^[0-9]{4,}$/", $arr->getPostCode()) != 1) {
                 return $this->redirectToRoute('address', ["success" => 0, "err" => "pc"]);
             }
 
-            if(!empty($arr->getPhonenumber()) && (intval(substr($arr->getPhonenumber(), 1)) == 0 || strpos($arr->getPhonenumber(), "+36") != 0)) {
+            if(!empty($arr->getPhonenumber()) && preg_match("/^\+{1}36[0-9]{8,9}$/", $arr->getPhonenumber()) != 1) {
                 return $this->redirectToRoute('address', ["success" => 0, "err" => "ph"]);
             }
 

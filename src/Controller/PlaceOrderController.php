@@ -133,15 +133,15 @@ class PlaceOrderController extends AbstractController
                     return $this->redirectToRoute('place_order', ["success" => 0, "err" => "cb"]);
                 }
 
-                if(intval($arr["postcode"]) == 0) {
+                if(preg_match("/^[0-9]{4,}$/", $arr["postcode"]) != 1) {
                     return $this->redirectToRoute('place_order', ["success" => 0, "err" => "pc"]);
                 }
 
-                if(!empty($arr["phonenumber"]) && (intval(substr($arr["phonenumber"], 1)) == 0 || strpos($arr["phonenumber"], "+36") != 0)) {
+                if(!empty($arr["phonenumber"]) && preg_match("/^\+{1}36[0-9]{8,9}$/", $arr["phonenumber"]) != 1) {
                     return $this->redirectToRoute('place_order', ["success" => 0, "err" => "ph"]);
                 }
 
-                if(preg_match("/^[0-9]{8}-[1-5]-[0-9]{2}$/", $arr["taxnumber"]) == 1 && !empty($arr["taxnumber"])) {
+                if(preg_match("/^[0-9]{8}-[1-5]-[0-9]{2}$/", $arr["taxnumber"]) != 1 && !empty($arr["taxnumber"])) {
                     return $this->redirectToRoute('place_order', ["success" => 0, "err" => "tx"]);
                 }
 
