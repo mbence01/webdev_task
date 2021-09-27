@@ -49,7 +49,7 @@ class Order
     private $addressPhone;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", length=15, nullable=true)
      */
     private $addressTax;
 

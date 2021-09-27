@@ -57,7 +57,7 @@ class PlaceOrderController extends AbstractController
                     'Céges' => 0,
                     'Magánszemély' => 1,
                 ],
-                'required' => false,
+                'required' => true,
             ])
             ->add('name', null, [
                 'label' => 'Név / Cégnév *',

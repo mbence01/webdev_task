@@ -33,7 +33,7 @@ class Address
     private $phonenumber;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", length=15, nullable=true)
      */
     private $taxnumber;
 
